@@ -2,7 +2,7 @@
 session_start();
 require_once 'database/Connection.php';
 
-$conexion = Connection::make();
+// $conexion = Connection::make();
 date_default_timezone_set("Europe/Madrid");
 
 function redirect($type) {
