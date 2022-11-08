@@ -1,9 +1,5 @@
-import { updateStyles } from '../scripts';
+import { updateStyles } from '../scripts.js';
 
 (function() {
     updateStyles('home', 1);
 })();
-
-/* document.addEventListener("DOMContentLoaded", function(event) { 
-    updateStyles('home', 1);
-}); */

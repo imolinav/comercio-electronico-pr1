@@ -1,5 +1,5 @@
 <?php
-require_once 'pages/home/home.api.php';
+require_once 'pages/home/home.service.php';
 
 
 

@@ -1,9 +1,5 @@
-import { updateStyles } from '../../scripts';
+import { updateStyles } from '../../scripts.js';
 
 (function() {
-    updateStyles('footer', 2);
+    updateStyles('footer', 'pages/shared');
 })();
-
-/* document.addEventListener("DOMContentLoaded", function(event) { 
-    updateStyles('footer', 2);
-}); */
