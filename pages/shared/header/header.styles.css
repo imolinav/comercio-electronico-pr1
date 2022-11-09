@@ -1,3 +1,13 @@
-.header {
-    
+.header input {
+    border-color: #000078;
+}
+
+.header button {
+    border-color: #000078;
+    color: #000078;
+}
+
+.header button:hover {
+    background-color: #000078;
+    color: white;
 }

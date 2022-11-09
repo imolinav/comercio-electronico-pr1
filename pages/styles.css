@@ -11,3 +11,19 @@ body {
     padding:0;
     min-height: 100%;
 }
+
+.bg-primary-color {
+    background-color: #73edff;
+}
+
+.bg-secondary-color {
+    background-color: #000078;
+}
+
+.text-primary-color {
+    color: #73edff;
+}
+
+.text-secondary-color {
+    color: #000078;
+}
