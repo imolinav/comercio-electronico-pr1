@@ -41,8 +41,8 @@ El fichero `pages/scripts.js` contiene las funcionalidades:
 
 ## TODO
 
-- [ ] Crear base de datos
-- [ ] Generar modelos de datos
+- [x] Crear base de datos
+- [x] Generar modelos de datos (revisar)
 - [ ] Vistas
 - [ ] Router
 - [x] Translation service
