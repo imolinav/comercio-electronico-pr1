@@ -1,7 +1,7 @@
-export function updateStyles(stylesRoute, rootLevel) {
+export function updateStyles(stylesRoute) {
     let linkElement = document.createElement('link');
     linkElement.rel = 'stylesheet';
-    let hrefLink = `${rootLevel}/${stylesRoute}/${stylesRoute}.styles.css`;
+    let hrefLink = `pages/${stylesRoute}/${stylesRoute}.styles.css`;
     linkElement.href = hrefLink;
     document.head.appendChild(linkElement);
 }
