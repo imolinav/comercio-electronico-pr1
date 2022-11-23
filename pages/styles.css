@@ -13,17 +13,52 @@ body {
 }
 
 .bg-primary-color {
-    background-color: #73edff;
+    background-color: #73edff !important;
 }
 
 .bg-secondary-color {
-    background-color: #000078;
+    background-color: #000078 !important;
 }
 
 .text-primary-color {
-    color: #73edff;
+    color: #73edff !important;
 }
 
 .text-secondary-color {
-    color: #000078;
+    color: #000078 !important;
+}
+
+.loader-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.loader-container {
+    height: 100px;
+    width: 100px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.loader-image {
+    
+    animation: rotate 1s infinite linear;
+}
+
+@keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
 }

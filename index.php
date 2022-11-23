@@ -1,13 +1,10 @@
 <?php
-
 session_start();
-require_once 'database/Connection.php';
-
-// $conexion = Connection::make();
+require_once 'database.php';
 date_default_timezone_set("Europe/Madrid");
 
 function redirect($type) {
-    if($type === 'GET') {
+    if ($type === 'GET') {
         header('Location: index.php');
     }
 }
@@ -51,10 +48,6 @@ switch ($request) {
         break;
     case '/shopping-cart' :
         require __DIR__ . '/pages/shopping-cart/shopping-cart.php';
-        break;
-    default:
-        http_response_code(404);
-        require __DIR__ . '/views/404.php';
         break;
 }
 

@@ -1,4 +1,13 @@
 <div class="login">
-    <p>login works!</p>
+    <form class="login-container needs-validation" novalidate>
+        <label class="form-label" for="email">Email</label>
+        <input class="form-control" type="text" name="email" id="email" required>
+        <p class="login-form-error d-none" id="emailError">Email is mandatory</p>
+        <p class="login-form-error d-none" id="emailFormatError">Incorrect email format</p>
+        <label class="form-label mt-3" for="password">Contraseña</label>
+        <input class="form-control" type="password" name="password" id="password" required>
+        <p class="login-form-error d-none" id="passwordError">Password is mandatory</p>
+        <button type="button" id="loginButton" class="btn btn-primary mt-3 align-self-end bg-secondary-color text-primary-color">Iniciar sesión</button>
+    </form>
 </div>
 <script type="module" src="pages/login/login.scripts.js"></script>

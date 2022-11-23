@@ -1,4 +1,26 @@
 <div class="register">
-    <p>register works!</p>
+    <form class="register-container needs-validation" novalidate>
+        <label class="form-label" for="name">Name</label>
+        <input class="form-control" type="text" name="name" id="name" required>
+        <p class="register-form-error d-none" id="nameError">Name is mandatory</p>
+        <label class="form-label" for="surname">Surname</label>
+        <input class="form-control" type="text" name="surname" id="surname" required>
+        <p class="register-form-error d-none" id="surnameError">Surname is mandatory</p>
+        <label class="form-label" for="email">Email</label>
+        <input class="form-control" type="text" name="email" id="email" required>
+        <p class="register-form-error d-none" id="emailError">Email is mandatory</p>
+        <p class="register-form-error d-none" id="emailFormatError">Incorrect email format</p>
+        <label class="form-label" for="birthDate">Birth date</label>
+        <input class="form-control" type="date" name="birthDate" id="birthDate" required>
+        <p class="register-form-error d-none" id="birthDateError">Birthdate is mandatory</p>
+        <label class="form-label" for="password">Contraseña</label>
+        <input class="form-control" type="password" name="password" id="password" required>
+        <p class="register-form-error d-none" id="passwordError">Password is mandatory</p>
+        <label class="form-label" for="confirmPassword">Confirmar Contraseña</label>
+        <input class="form-control" type="password" name="confirmPassword" id="confirmPassword" required>
+        <p class="register-form-error d-none" id="confirmPasswordError">Confirmation password is mandatory</p>
+        <p class="register-form-error d-none" id="passwordMismatchError">Passwords don't match</p>
+        <button type="button" class="btn btn-primary mt-3 align-self-end bg-secondary-color text-primary-color" id="registerButton">Regístrate</button>
+    </form>
 </div>
 <script type="module" src="pages/register/register.scripts.js"></script>
