@@ -5,3 +5,21 @@ export function updateStyles(stylesRoute) {
     linkElement.href = hrefLink;
     document.head.appendChild(linkElement);
 }
+
+
+export function alert(message, type, timeout = 5000) {
+    const pageAlert = document.getElementById('pageAlert');
+    const wrapper = document.createElement('div')
+    wrapper.innerHTML = [
+      `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+      `   <div>${message}</div>`,
+      '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+      '</div>'
+    ].join('')
+  
+    pageAlert.append(wrapper);
+    setTimeout(() => {
+        pageAlert.removeChild(wrapper);
+    }, timeout);
+}
+  

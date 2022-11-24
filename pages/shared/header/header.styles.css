@@ -2,12 +2,12 @@
     border-color: #000078;
 }
 
-.header button {
+.header button, .header a {
     border-color: #000078;
     color: #000078;
 }
 
-.header button:hover {
+.header button:hover, .header a:hover {
     background-color: #000078;
     color: white;
 }

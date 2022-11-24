@@ -3,7 +3,7 @@ if (isset($_GET['email']) && isset($_GET['password'])) {
     require_once(__DIR__.'/../../database.php');
     $user = getUser($connection, $_GET['email']);
     if (empty($user) || !password_verify($_GET['password'], $user['password'])) {
-        $response = array('status' => 'error', 'message' => 'Incorrect credentials');
+        $response = array('status' => 'error', 'message' => 'Invalid user credentials');
         echo json_encode($response);
     } else {
         unset($user['password']);

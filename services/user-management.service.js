@@ -1,4 +1,5 @@
 import { get, post } from './http.service.js';
+import { alert } from '../pages/scripts.js';
 
 export function login(data) {
     if (data.email === '' || data.password === '') return;
@@ -6,6 +7,8 @@ export function login(data) {
         if (res.status === 'success' && res.data) {
             localStorage.setItem('user', JSON.stringify(res.data));
             location.href = '/';
+        } else {
+            alert(res.message, 'danger');
         }
     });
 }
@@ -16,6 +19,8 @@ export function register(data) {
         if (res.status === 'success' && res.data) {
             localStorage.setItem('user', JSON.stringify(res.data));
             location.href = '/';
+        } else {
+            alert(res.message, 'danger');
         }
     });
 }

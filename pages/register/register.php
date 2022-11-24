@@ -12,7 +12,7 @@ if (isset($_POST['register'])) {
             echo json_encode($response);
         }
     } else {
-        $response = array('status' => 'error', 'message' => 'User already exists');
+        $response = array('status' => 'error', 'message' => 'Email already in use');
         echo json_encode($response);
     }
 } else {
