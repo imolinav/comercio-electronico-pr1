@@ -1,4 +1,5 @@
 <?php
+
 if (isset($_GET['email']) && isset($_GET['password'])) {
     require_once(__DIR__.'/../../database.php');
     $user = getUser($connection, $_GET['email']);

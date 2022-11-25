@@ -1,3 +1,21 @@
-.search>p {
-    color: red;
+.product-price {
+    display: flex;
+    align-items: center;
+    margin-top: -0.5rem;
+}
+
+.product-current-price {
+    font-size: 25px;
+    margin: 0;
+    font-weight: bold;
+}
+
+.product-previous-price {
+    margin: 0;
+    text-decoration: line-through;
+    margin-left: 0.5rem;
+}
+
+.checked {
+    color: orange;
 }

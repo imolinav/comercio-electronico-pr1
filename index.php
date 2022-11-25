@@ -20,6 +20,9 @@ if (isset($_POST['locale'])) {
 include 'internationalization/' . $_COOKIE['locale'] . '.php';
 
 $request = $_SERVER['REQUEST_URI'];
+if (strpos($request, '?')) {
+    $request = explode('?', $request)[0];
+}
 
 switch ($request) {
     case '/' :

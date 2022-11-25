@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="pages/styles.css">
     <link rel="stylesheet" href="pages/shared/header/header.styles.css">
     <link rel="stylesheet" href="pages/shared/footer/footer.styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
     <link rel="icon" type="image/png" href="/assets/favicon/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <title><?= $i_header_title ?></title>
@@ -17,10 +18,10 @@
             <div class="container-fluid">
                 <div class="d-flex">
                     <a class="navbar-brand text-secondary-color me-5" href="/"><?= $i_header_title ?></a>
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="<?= $i_header_search_input ?>" aria-label="Search">
-                        <button class="btn btn-outline" type="submit"><?= $i_header_search_button ?></button>
-                    </form>
+                    <div class="d-flex">
+                        <input class="form-control me-2" type="text" id="searchInput" placeholder="<?= $i_header_search_input ?>" aria-label="Search">
+                        <button class="btn btn-outline" type="submit" id="searchButton"><?= $i_header_search_button ?></button>
+                    </div>
                 </div>
                 <div class="d-flex">
                     <div class="dropdown me-3">
@@ -47,4 +48,4 @@
     </div>
     <script type="module" src="pages/scripts.js"></script>
     <script type="module" src="pages/shared/header/header.scripts.js"></script>
-    <div class="container">
+    <div class="container-fluid">
