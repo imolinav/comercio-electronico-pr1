@@ -72,3 +72,20 @@
 .filter-group {
     margin-bottom: 2rem;
 }
+
+.shopping-cart-container {
+    position: relative;
+}
+
+.shopping-cart-items {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    background-color: red;
+    width: 15px;
+    height: 15px;
+    font-size: 10px;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+}

@@ -52,6 +52,9 @@ switch ($request) {
     case '/shopping-cart' :
         require __DIR__ . '/pages/shopping-cart/shopping-cart.php';
         break;
+    default :
+        require __DIR__ . '/pages/product/product.php';
+        break; 
 }
 
 ?>

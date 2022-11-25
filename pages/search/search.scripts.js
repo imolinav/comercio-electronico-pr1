@@ -12,7 +12,7 @@ typeInputs.forEach(input => input.addEventListener('click', (event) => filterPro
 
 function filterProducts(event) {
     const products = document.querySelectorAll(`[data-${event.target.name}="${event.target.value}"]`);
-    if(event.target.checked) {
+    if (event.target.checked) {
         products.forEach(item => {
             const secondaryFilter = event.target.name === 'company' ? 'type' : 'company';
             const productSecondaryData = item.getAttribute(`data-${secondaryFilter}`);

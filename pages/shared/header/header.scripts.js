@@ -10,7 +10,7 @@ searchInput.addEventListener('keyup', (event) => {
     if (!event.isTrusted) return;
     if (event.key === 'Enter') {
         location.href = `/search?text=${searchInput.value}`;
-    } else if(searchInput.value.length > 2) {
+    } else if (searchInput.value.length > 2) {
         searchHeaderProducts(searchInput.value).then(res => {
             if (res.status === 'success' && res.data) {
                 createResultBox(res.data);
@@ -24,7 +24,7 @@ searchInput.addEventListener('keyup', (event) => {
 });
 
 searchInput.addEventListener('focus', (event) => {
-    if(searchInput.value.length > 2) {
+    if (searchInput.value.length > 2) {
         searchHeaderProducts(searchInput.value).then(res => {
             if (res.status === 'success' && res.data) {
                 createResultBox(res.data);
@@ -57,7 +57,7 @@ function createResultBox(data) {
             `<div class="result-element">`,
             `   <div>`,
             `       <p class="result-element-name">${element.name}</p>`,
-            `       <p class="result-element-company">${element.company}</p>`,
+            `       <p class="result-element-company">${element.company} - ${element.type}</p>`,
             `   </div>`,
             `   <div class="result-element-prices">`,
             priceText,

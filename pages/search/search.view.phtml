@@ -1,58 +1,61 @@
-<div class="search row">
-    <div class="search-filter col-2 mt-5">
-        <!-- <h5 class="filter-header">Filter by</h5> -->
-        <p class="filter-title">Company</p>
-        <div class="filter-group">
-            <?php foreach ($companies as $company) : ?>
-                <div>
-                    <input type="checkbox" name="company" value="<?= $company ?>" id="company<?= $company ?>" checked>
-                    <label for="company<?= $company ?>"><?= $company ?></label>
-                </div>
-            <?php endforeach; ?>
-        </div>
-        <p class="filter-title">Product type</p>
-        <div class="filter-group">
-            <?php foreach ($types as $type) : ?>
-                <div>
-                    <input type="checkbox" name="type" value="<?= $type ?>" id="type<?= $type ?>" checked>
-                    <label for="type<?= $type ?>"><?= $type ?></label>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    </div>
-    <div class="search-result col-9 mt-5">
-        <div class="row">
-            <?php if ($products) : ?>
-                <?php foreach ($products as $product) : ?>
-                    <div class="col-3 mb-3 product-card" data-company="<?= $product['company'] ?>" data-type="<?= $product['type'] ?>">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title"><?= $product['name'] ?></h5>
-                                <h6 class="card-subtitle mb-2 text-muted"><?= $product['company'] ?></h6>
-                                <p class="card-text"><?= $product['description'] ?></p>
-                                <div class="product-price">
-                                    <?php if ($product['offer']) : ?>
-                                        <p class="product-current-price"><?= $product['offer'] ?>€</p>
-                                    <p class="product-previous-price"><?= $product['price'] ?>€</p>
-                                    <?php else : ?>
-                                    <p class="product-current-price"><?= $product['price'] ?>€</p>
-                                    <?php endif; ?>
-                                </div>
-                                <div>
-                                    <span class="fa-star <?php if ($product['rating'] > 0) { echo 'fa checked'; } else { echo 'far'; } ?>"></span>
-                                    <span class="fa-star <?php if ($product['rating'] >= 1) { echo 'fa checked'; } else { echo 'far'; } ?>"></span>
-                                    <span class="fa-star <?php if ($product['rating'] >= 2) { echo 'fa checked'; } else { echo 'far'; } ?>"></span>
-                                    <span class="fa-star <?php if ($product['rating'] >= 3) { echo 'fa checked'; } else { echo 'far'; } ?>"></span>
-                                    <span class="fa-star <?php if ($product['rating'] >= 4) { echo 'fa checked'; } else { echo 'far'; } ?>"></span>
-                                </div>
-                                <a href="#" class="card-link">Ver producto</a>
-                            </div>
-                        </div>
+<div class="container-fluid">
+
+    <div class="search row">
+        <div class="search-filter col-2 mt-5">
+            <!-- <h5 class="filter-header">Filter by</h5> -->
+            <p class="filter-title">Company</p>
+            <div class="filter-group">
+                <?php foreach ($companies as $company) : ?>
+                    <div>
+                        <input type="checkbox" name="company" value="<?= $company ?>" id="company<?= $company ?>" checked>
+                        <label for="company<?= $company ?>"><?= $company ?></label>
                     </div>
                 <?php endforeach; ?>
-            <?php else : ?>
-                <p>No se han encontrado productos que cuadren con la búsqueda</p>
-            <?php endif; ?>
+            </div>
+            <p class="filter-title">Product type</p>
+            <div class="filter-group">
+                <?php foreach ($types as $type) : ?>
+                    <div>
+                        <input type="checkbox" name="type" value="<?= $type ?>" id="type<?= $type ?>" checked>
+                        <label for="type<?= $type ?>"><?= $type ?></label>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <div class="search-result col-9 mt-5">
+            <div class="row">
+                <?php if ($products) : ?>
+                    <?php foreach ($products as $product) : ?>
+                        <div class="col-3 mb-3 product-card" data-company="<?= $product['company'] ?>" data-type="<?= $product['type'] ?>">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?= $product['name'] ?></h5>
+                                    <h6 class="card-subtitle mb-2 text-muted"><?= $product['company'] ?></h6>
+                                    <p class="card-text"><?= $product['description'] ?></p>
+                                    <div class="product-price">
+                                        <?php if ($product['offer']) : ?>
+                                            <p class="product-current-price"><?= $product['offer'] ?>€</p>
+                                        <p class="product-previous-price"><?= $product['price'] ?>€</p>
+                                        <?php else : ?>
+                                        <p class="product-current-price"><?= $product['price'] ?>€</p>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div>
+                                        <span class="fa-star <?php if ($product['rating'] > 0) { echo 'fa checked'; } else { echo 'far'; } ?>"></span>
+                                        <span class="fa-star <?php if ($product['rating'] >= 1) { echo 'fa checked'; } else { echo 'far'; } ?>"></span>
+                                        <span class="fa-star <?php if ($product['rating'] >= 2) { echo 'fa checked'; } else { echo 'far'; } ?>"></span>
+                                        <span class="fa-star <?php if ($product['rating'] >= 3) { echo 'fa checked'; } else { echo 'far'; } ?>"></span>
+                                        <span class="fa-star <?php if ($product['rating'] >= 4) { echo 'fa checked'; } else { echo 'far'; } ?>"></span>
+                                    </div>
+                                    <a href="<?= $product['link'] ?>" class="card-link">Ver producto</a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <p>No se han encontrado productos que cuadren con la búsqueda</p>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 </div>
