@@ -48,7 +48,7 @@ El fichero `pages/scripts.js` contiene las funcionalidades:
 - [x] Vistas
 - [x] Router
 - [x] Translation service
-- [ ] Product page (añadir al carrito, similares (mismo tipo), misma compañia)
+- [x] Product page (añadir al carrito, similares (mismo tipo), misma compañia)
 - [ ] Product foto
 - [ ] Shopping cart page (checkout, eliminar, últimos pedidos)
 - [ ] Checkout page (elegir direccion y método de pago, añadir dirección, añadir método de pago, tramitar)
