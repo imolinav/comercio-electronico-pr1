@@ -51,8 +51,8 @@ El fichero `pages/scripts.js` contiene las funcionalidades:
 - [x] Product page (añadir al carrito, similares (mismo tipo), misma compañia)
 - [ ] Product foto
 - [x] Shopping cart page (checkout, eliminar, últimos pedidos)
-- [ ] Checkout page (elegir direccion y método de pago, añadir dirección, añadir método de pago, tramitar)
-- [ ] Receipt page
+- [x] Checkout page (elegir direccion y método de pago, añadir dirección, añadir método de pago, tramitar)
+- [x] Receipt page
 - [ ] User page (?) (cambiar datos, añadir dirección, añadir método de pago, dirección por defecto, método de pago por defecto)
 - [ ] Cambio de idioma
 - [ ] Guardar respuesta de BE en modelos
