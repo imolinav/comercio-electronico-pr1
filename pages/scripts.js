@@ -24,8 +24,19 @@ export function alert(message, type, timeout = 5000) {
     }, timeout);
 }
 
+function createCookie(name, value, days) {
+    let expires = '';
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = `; expires=${date.toUTCString()}`;
+    }
+    document.cookie = `${name}=${value}${expires}; path=/; domain=localhost`;
+}
+
 (function() {
-    const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : { id: Date.now() };
+    const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : { id: 'e_' + Date.now() };
     localStorage.setItem('user', JSON.stringify(user));
+    createCookie('userId', user.id, 30);
     getShoppingCart(user.id);
 })();

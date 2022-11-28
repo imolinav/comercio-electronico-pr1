@@ -2,6 +2,8 @@ import { searchHeaderProducts } from "../../../services/products.service.js";
 
 let searchInput = document.getElementById('searchInput');
 let searchButton = document.getElementById('searchButton');
+let shoppingCartContainer = document.getElementById('shoppingCartContainer');
+let shoppingCartButton = document.getElementById('shoppingCartButton');
 searchButton.addEventListener('click', () => {
     location.href = `/search?text=${searchInput.value}`;
 });
@@ -22,6 +24,46 @@ searchInput.addEventListener('keyup', (event) => {
         clearResultBox();
     }
 });
+
+shoppingCartButton.addEventListener('click', () => {
+    if (document.getElementById('shoppingCartList')) {
+        clearShoppingCartBox();
+    } else {
+        const shoppingCart = JSON.parse(localStorage.getItem('shopping-cart'));
+        const shoppingCartList = document.createElement('div');
+        shoppingCartList.setAttribute('id', 'shoppingCartList');
+        if (!shoppingCart || shoppingCart.products.length == 0) {
+            shoppingCartList.innerHTML = [
+                `<p>No has añadido nada al carrito todavia.</p>`
+            ].join('');
+        } else {
+            let productList = '';
+            shoppingCart.products.forEach(product => {
+                const productPrice = product.offer 
+                    ? `<p class="result-element-price">${product.offer}€</p><p class="result-element-previous">${product.price}€</p>`
+                    : `<p class="result-element-price">${product.price}€</p>`
+                productList += [
+                    `<a class="shopping-cart-product" href="${product.name.toLowerCase().replace(' ', '-')}">`,
+                    `   <div class="shopping-cart-product-info">`,
+                    `       <p class="shopping-cart-product-name">${product.name}</p>`,
+                    `       <p class="shopping-cart-product-quantity">Total: x${product.quantity}</p>`,
+                    `   </div>`,
+                    `   <div class="d-flex">`,
+                    productPrice,
+                    `   </div>`,
+                    `</a>`
+                ].join('');
+            });
+            shoppingCartList.innerHTML = productList;
+            const shoppingButton = document.createElement('a');
+            shoppingButton.setAttribute('class', 'btn btn-primary shopping-cart-button bg-primary-color text-secondary-color');
+            shoppingButton.innerText = 'Ir al carrito';
+            shoppingButton.setAttribute('href', 'shopping-cart');
+            shoppingCartList.appendChild(shoppingButton);
+        }
+        shoppingCartContainer.appendChild(shoppingCartList);
+    }
+})
 
 searchInput.addEventListener('focus', (event) => {
     if (searchInput.value.length > 2) {
@@ -73,4 +115,8 @@ function clearResultBox() {
     const resultContainer = document.getElementById('resultContainer');
     if (!resultContainer) return;
     document.getElementsByClassName('header')[0].removeChild(resultContainer);
+}
+
+function clearShoppingCartBox() {
+    shoppingCartContainer.removeChild(document.getElementById('shoppingCartList'));
 }

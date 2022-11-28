@@ -50,7 +50,7 @@ El fichero `pages/scripts.js` contiene las funcionalidades:
 - [x] Translation service
 - [x] Product page (añadir al carrito, similares (mismo tipo), misma compañia)
 - [ ] Product foto
-- [ ] Shopping cart page (checkout, eliminar, últimos pedidos)
+- [x] Shopping cart page (checkout, eliminar, últimos pedidos)
 - [ ] Checkout page (elegir direccion y método de pago, añadir dirección, añadir método de pago, tramitar)
 - [ ] Receipt page
 - [ ] User page (?) (cambiar datos, añadir dirección, añadir método de pago, dirección por defecto, método de pago por defecto)
@@ -58,3 +58,4 @@ El fichero `pages/scripts.js` contiene las funcionalidades:
 - [ ] Guardar respuesta de BE en modelos
 - [ ] Panel de control (añadir compañia, producto, descuento y usuario)
 - [ ] Panel de control (comprobar pedidos)
+- [ ] Mover .then() a los componentes, fuera de los servicios

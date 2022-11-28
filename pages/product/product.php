@@ -13,10 +13,30 @@ if (isset($_POST['add_product'])) {
         $response = array('status' => 'success', 'message' => 'Product added to the shopping cart', 'data' => $shoppingCart);
         echo json_encode($response);
     }
-
 } else if (isset($_POST['remove_product'])) {
+    $data = json_decode($_POST['remove_product'], true);
+    $shoppingCart = removeProductFromShoppingCart($connection, $data['userId'], $data['productId']);
 
+    if(!isset($shoppingCart) || empty($shoppingCart)) {
+        $response = array('status' => 'error', 'message' => 'Product couldn\t be removed from shopping cart');
+        echo json_encode($response);
+    } else {
+        $response = array('status' => 'success', 'message' => 'Product removed from shopping cart', 'data' => $shoppingCart);
+        echo json_encode($response);
+    }
+} else if (isset($_POST['update_product'])) {
+    $data = json_decode($_POST['update_product'], true);
+    $shoppingCart = updateProductFromShoppingCart($connection, $data['userId'], $data['productId'], $data['quantity']);
+    
+    if(!isset($shoppingCart) || empty($shoppingCart)) {
+        $response = array('status' => 'error', 'message' => 'Product couldn\t be updated on the shopping cart');
+        echo json_encode($response);
+    } else {
+        $response = array('status' => 'success', 'message' => 'Product updated on the shopping cart', 'data' => $shoppingCart);
+        echo json_encode($response);
+    }
 } else if (isset($_GET['user_id'])) {
+    $_SESSION['user_id'] = $_GET['user_id'];
     $shoppingCart = getShoppingCart($connection, $_GET['user_id']);
     if(!isset($shoppingCart) || empty($shoppingCart)) {
         $response = array('status' => 'error', 'message' => 'Product couldn\t be added to shopping cart');
@@ -100,5 +120,50 @@ function addProductToShoppingCart($connection, $userId, $productId, $quantity) {
     }
 
     return getShoppingCart($connection, $userId);
+}
+
+function removeProductFromShoppingCart($connection, $userId, $productId) {
+    $shoppingCart = getShoppingCart($connection, $userId);
+
+    if (!isset($shoppingCart) || empty($shoppingCart)) {
+        return null;
+    }
+
+    $product = findProductById($shoppingCart['products'], $productId);
+
+    $stmt = mysqli_prepare($connection, "DELETE FROM purchase_has_product WHERE `purchase_id` = ? AND `product_id` = ?");
+    mysqli_stmt_bind_param($stmt, "ii", $shoppingCart['id'], $productId);
+    mysqli_stmt_execute($stmt);
+
+    return getShoppingCart($connection, $userId);
+}
+
+function updateProductFromShoppingCart($connection, $userId, $productId, $quantity) {
+    $shoppingCart = getShoppingCart($connection, $userId);
+
+    if (!isset($shoppingCart) || empty($shoppingCart)) {
+        return null;
+    }
+
+    $product = findProductById($shoppingCart['products'], $productId);
+
+    if ($product['quantity'] > $quantity) {
+        removeProductFromShoppingCart($connection, $userId, $productId);
+        addProductToShoppingCart($connection, $userId, $productId, $quantity);
+    } else {
+        $quantityToAdd = $quantity - $product['quantity'];
+        addProductToShoppingCart($connection, $userId, $productId, $quantityToAdd);
+    }
+
+    return getShoppingCart($connection, $userId);
+}
+
+function findProductById($products, $productId) {
+    foreach ($products as $product) {
+        if($product['id'] == $productId) {
+            return $product;
+        }
+    }
+    return false;
 }
 ?>

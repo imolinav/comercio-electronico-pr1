@@ -23,18 +23,19 @@ export function addToShoppingCart(userId, productId, quantity) {
     });
 }
 
-export function removeFromShoppingCart(userId, productId) {
+export function removeFromShoppingCart(productId) {
     if (!productId || productId === 0) return;
-    post('product', { userId: userId, product: productId}, true, 'remove_product').then(res => {
-        if (res.status === 'success' && res.data) {
-            updateShoppingCart(res.data);
-        } else {
-            alert(res.message, 'danger');
-        }
-    });
+    const user = JSON.parse(localStorage.getItem('user'));
+    return post('product', { userId: user.id, productId: productId}, true, 'remove_product');
 }
 
-function updateShoppingCart(shoppingCart) {
+export function changeItemQuantity(productId, quantity) {
+    if (!productId || productId === 0 || !quantity) return;
+    const user = JSON.parse(localStorage.getItem('user'));
+    return post('product', { userId: user.id, productId: productId, quantity: quantity }, true, 'update_product');
+}
+
+export function updateShoppingCart(shoppingCart) {
     localStorage.setItem('shopping-cart', JSON.stringify(shoppingCart));
     const shoppingCartItems = document.getElementById('shoppingCartItems');
     if (shoppingCart.products.length > 0) {
