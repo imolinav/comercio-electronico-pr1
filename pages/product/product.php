@@ -39,10 +39,10 @@ if (isset($_POST['add_product'])) {
     $_SESSION['user_id'] = $_GET['user_id'];
     $shoppingCart = getShoppingCart($connection, $_GET['user_id']);
     if(!isset($shoppingCart) || empty($shoppingCart)) {
-        $response = array('status' => 'error', 'message' => 'Product couldn\t be added to shopping cart');
+        $response = array('status' => 'error', 'message' => 'Shopping cart not found');
         echo json_encode($response);
     } else {
-        $response = array('status' => 'success', 'message' => 'Product added to the shopping cart', 'data' => $shoppingCart);
+        $response = array('status' => 'success', 'message' => 'Shopping cart retrieved', 'data' => $shoppingCart);
         echo json_encode($response);
     }
 } else {

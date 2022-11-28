@@ -24,3 +24,11 @@ export function register(data) {
         }
     });
 }
+
+export function addPaymentMethod(data) {
+    return post('purchase-details', data, true, 'add_payment_method');
+}
+
+export function addDirection(data) {
+    return post('purchase-details', data, true, 'add_direction');
+}

@@ -39,10 +39,6 @@ function createCookie(name, value, days) {
     localStorage.setItem('user', JSON.stringify(user));
     createCookie('userId', user.id, 30);
     getShoppingCart(user.id).then(res => {
-        if (res.status === 'success' && res.data) {
-            updateShoppingCart(res.data);
-        } else {
-            alert(res.message, 'danger');
-        }
+        updateShoppingCart(res.data);
     });
 })();

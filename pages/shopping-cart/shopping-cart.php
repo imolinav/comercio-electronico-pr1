@@ -2,7 +2,6 @@
 require_once(__DIR__.'/../../database.php');
 if ($_COOKIE['userId']) {
     $shoppingCart = getShoppingCart($connection, $_COOKIE['userId']);
-    // var_dump($shoppingCart);
 }
 
 include 'pages/shared/header/header.view.phtml';

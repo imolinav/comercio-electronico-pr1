@@ -25,16 +25,26 @@ export function changeItemQuantity(productId, quantity) {
 }
 
 export function updateShoppingCart(shoppingCart) {
-    localStorage.setItem('shopping-cart', JSON.stringify(shoppingCart));
-    const shoppingCartItems = document.getElementById('shoppingCartItems');
-    if (shoppingCart.products.length > 0) {
-        const totalItems = shoppingCart.products.reduce((acc, item) => {
-            return acc + item.quantity;
-        }, 0);
-        shoppingCartItems.classList.remove('d-none');
-        shoppingCartItems.innerText = totalItems;
+    if (!shoppingCart) {
+        localStorage.setItem('shopping-cart', null);
     } else {
-        shoppingCartItems.classList.add('d-none');
-        shoppingCartItems.innerText = '';
+        localStorage.setItem('shopping-cart', JSON.stringify(shoppingCart));
+        const shoppingCartItems = document.getElementById('shoppingCartItems');
+        if (shoppingCart.products.length > 0) {
+            const totalItems = shoppingCart.products.reduce((acc, item) => {
+                return acc + item.quantity;
+            }, 0);
+            shoppingCartItems.classList.remove('d-none');
+            shoppingCartItems.innerText = totalItems;
+        } else {
+            shoppingCartItems.classList.add('d-none');
+            shoppingCartItems.innerText = '';
+        }
     }
+}
+
+export function processPurchase(direction, paymentMethod) {
+    if (!direction || !paymentMethod) return;
+    const userId = JSON.parse(localStorage.getItem('user')).id;
+    return post('purchase-details', { userId: userId, direction: direction, paymentMethod: paymentMethod }, true, 'process_purchase');
 }
