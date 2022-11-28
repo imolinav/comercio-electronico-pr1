@@ -1,4 +1,4 @@
-import { getShoppingCart } from "../services/shopping-cart.service.js";
+import { getShoppingCart, updateShoppingCart } from "../services/shopping-cart.service.js";
 
 export function updateStyles(stylesRoute) {
     let linkElement = document.createElement('link');
@@ -38,5 +38,11 @@ function createCookie(name, value, days) {
     const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : { id: 'e_' + Date.now() };
     localStorage.setItem('user', JSON.stringify(user));
     createCookie('userId', user.id, 30);
-    getShoppingCart(user.id);
+    getShoppingCart(user.id).then(res => {
+        if (res.status === 'success' && res.data) {
+            updateShoppingCart(res.data);
+        } else {
+            alert(res.message, 'danger');
+        }
+    });
 })();

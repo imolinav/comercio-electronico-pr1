@@ -1,4 +1,4 @@
-import { addToShoppingCart } from '../../services/shopping-cart.service.js';
+import { addToShoppingCart, updateShoppingCart } from '../../services/shopping-cart.service.js';
 import { updateStyles } from '../scripts.js';
 
 let quantityInput = document.getElementById('quantity');
@@ -8,7 +8,12 @@ let productId = document.getElementById('productId');
 (function() {
     updateStyles('product');
     shoppingCartButton.addEventListener('click', () => {
-        const userId = JSON.parse(localStorage.getItem('user')).id
-        addToShoppingCart(userId, productId.value, quantityInput.value);
+        addToShoppingCart(productId.value, quantityInput.value).then(res => {
+            if (res.status === 'success' && res.data) {
+                updateShoppingCart(res.data);
+            } else {
+                alert(res.message, 'danger');
+            }
+        });
     });
 })();

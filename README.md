@@ -58,4 +58,5 @@ El fichero `pages/scripts.js` contiene las funcionalidades:
 - [ ] Guardar respuesta de BE en modelos
 - [ ] Panel de control (añadir compañia, producto, descuento y usuario)
 - [ ] Panel de control (comprobar pedidos)
-- [ ] Mover .then() a los componentes, fuera de los servicios
+- [x] Mover .then() a los componentes, fuera de los servicios
+- [ ] Mover llamadas a la API en ficheros de servicios PHP

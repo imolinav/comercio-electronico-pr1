@@ -3,36 +3,25 @@ import { get, post } from './http.service.js';
 
 export function getShoppingCart(userId) {
     if (!userId || userId === 0) return;
-    get('product', [{ key: 'user_id', value: userId }], true).then(res => {
-        if (res.status === 'success' && res.data) {
-            updateShoppingCart(res.data);
-        } else {
-            alert(res.message, 'danger');
-        }
-    })
+    return get('product', [{ key: 'user_id', value: userId }], true);
 }
 
-export function addToShoppingCart(userId, productId, quantity) {
+export function addToShoppingCart(productId, quantity) {
     if (!productId || productId === 0) return;
-    post('product', { userId: userId, product: productId, quantity: quantity }, true, 'add_product').then(res => {
-        if (res.status === 'success' && res.data) {
-            updateShoppingCart(res.data);
-        } else {
-            alert(res.message, 'danger');
-        }
-    });
+    const userId = JSON.parse(localStorage.getItem('user')).id;
+    return post('product', { userId: userId, product: productId, quantity: quantity }, true, 'add_product');
 }
 
 export function removeFromShoppingCart(productId) {
     if (!productId || productId === 0) return;
-    const user = JSON.parse(localStorage.getItem('user'));
-    return post('product', { userId: user.id, productId: productId}, true, 'remove_product');
+    const userId = JSON.parse(localStorage.getItem('user')).id;
+    return post('product', { userId: userId, productId: productId}, true, 'remove_product');
 }
 
 export function changeItemQuantity(productId, quantity) {
     if (!productId || productId === 0 || !quantity) return;
-    const user = JSON.parse(localStorage.getItem('user'));
-    return post('product', { userId: user.id, productId: productId, quantity: quantity }, true, 'update_product');
+    const userId = JSON.parse(localStorage.getItem('user')).id;
+    return post('product', { userId: userId, productId: productId, quantity: quantity }, true, 'update_product');
 }
 
 export function updateShoppingCart(shoppingCart) {
