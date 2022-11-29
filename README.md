@@ -54,10 +54,11 @@ El fichero `pages/scripts.js` contiene las funcionalidades:
 - [x] Checkout page (elegir direccion y método de pago, añadir dirección, añadir método de pago, tramitar)
 - [x] Receipt page
 - [ ] User page (?) (cambiar datos, añadir dirección, añadir método de pago, dirección por defecto, método de pago por defecto)
-- [ ] Cambio de idioma
+- [x] Cambio de idioma
 - [ ] Guardar respuesta de BE en modelos
 - [ ] Panel de control (añadir compañia, producto, descuento y usuario)
 - [ ] Panel de control (comprobar pedidos)
 - [x] Mover .then() a los componentes, fuera de los servicios
 - [ ] Mover llamadas a la API en ficheros de servicios PHP
 - [ ] Revisar id de usuarios (invitados son strings, normales son números)
+- [ ] Sistema de puntos de producto

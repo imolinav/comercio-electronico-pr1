@@ -3,7 +3,7 @@
     <div class="search row">
         <div class="search-filter col-2 mt-5">
             <!-- <h5 class="filter-header">Filter by</h5> -->
-            <p class="filter-title">Company</p>
+            <p class="filter-title"><?= $i_search_company ?></p>
             <div class="filter-group">
                 <?php foreach ($companies as $company) : ?>
                     <div>
@@ -12,7 +12,7 @@
                     </div>
                 <?php endforeach; ?>
             </div>
-            <p class="filter-title">Product type</p>
+            <p class="filter-title"><?= $i_search_type ?></p>
             <div class="filter-group">
                 <?php foreach ($types as $type) : ?>
                     <div>
@@ -47,13 +47,13 @@
                                         <span class="fa-star <?php if ($product['rating'] >= 3) { echo 'fa checked'; } else { echo 'far'; } ?>"></span>
                                         <span class="fa-star <?php if ($product['rating'] >= 4) { echo 'fa checked'; } else { echo 'far'; } ?>"></span>
                                     </div>
-                                    <a href="<?= $product['link'] ?>" class="card-link">Ver producto</a>
+                                    <a href="<?= $product['link'] ?>" class="card-link"><?= $i_search_see_product ?></a>
                                 </div>
                             </div>
                         </div>
                     <?php endforeach; ?>
                 <?php else : ?>
-                    <p>No se han encontrado productos que cuadren con la búsqueda</p>
+                    <p><?= $i_search_not_found ?></p>
                 <?php endif; ?>
             </div>
         </div>

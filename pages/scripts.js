@@ -24,7 +24,7 @@ export function alert(message, type, timeout = 5000) {
     }, timeout);
 }
 
-function createCookie(name, value, days) {
+export function createCookie(name, value, days) {
     let expires = '';
     if (days) {
         var date = new Date();

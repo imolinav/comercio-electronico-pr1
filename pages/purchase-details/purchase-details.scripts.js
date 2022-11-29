@@ -34,7 +34,6 @@ function handleNewPaymentMethod() {
     };
     addPaymentMethod(formValues).then(res => {
         if (res.status === 'success' && res.data) {
-            console.log(res.data);
             paymentMethodContainer.innerHTML = '';
             res.data.forEach(paymentMethod => {
                 if (paymentMethod.payment_type === 1) {
@@ -67,7 +66,6 @@ function handleNewDirection() {
     };
     addDirection(formValues).then(res => {
         if (res.status === 'success' && res.data) {
-            console.log(res.data);
             directionContainer.innerHTML = '';
             res.data.forEach(direction => {
                 directionContainer.innerHTML += [

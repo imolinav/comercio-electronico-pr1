@@ -1,12 +1,21 @@
+import { post } from "../../../services/http.service.js";
 import { searchHeaderProducts } from "../../../services/products.service.js";
+import { createCookie } from "../../scripts.js";
 
 let searchInput = document.getElementById('searchInput');
 let searchButton = document.getElementById('searchButton');
 let shoppingCartContainer = document.getElementById('shoppingCartContainer');
 let shoppingCartButton = document.getElementById('shoppingCartButton');
+let languageButtons = document.getElementsByClassName('language-select');
 searchButton.addEventListener('click', () => {
     location.href = `/search?text=${searchInput.value}`;
 });
+for (let i = 0; i < languageButtons.length; i++) {
+    languageButtons[i].addEventListener('click', (event) => {
+        createCookie('locale', event.target.dataset.language, 30);
+        post('../index', { language: event.target.dataset.language}, true, 'locale').then(() => location.reload());
+    });
+}
 
 searchInput.addEventListener('keyup', (event) => {
     if (!event.isTrusted) return;

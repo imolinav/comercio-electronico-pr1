@@ -1,6 +1,6 @@
 <div class="container mt-5">
     <?php if (isset($shoppingCart) && !empty($shoppingCart) && count($shoppingCart['products']) > 0) : ?>
-        <h4>Resumen del pedido</h4>
+        <h4><?= $i_purchase_details_summary ?></h4>
         <?php foreach ($shoppingCart['products'] as $product) : ?>
             <div class="shopping-cart-product-list mb-4" id="shoppingCartItem<?= $product['id'] ?>">
                 <div class="row">
@@ -22,12 +22,12 @@
                         </div>
                         <div>
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="m-0 me-3">Quantity: x<?= $product['quantity'] ?></span>
+                                <span class="m-0 me-3"><?= $i_purchase_details_quantity ?>: x<?= $product['quantity'] ?></span>
                             </div>
                             <?php if ($product['offer']) : ?>
-                                <p class="product-total-price" data-price="<?= $product['offer'] ?>">Total: <?= $product['offer'] * $product['quantity'] ?>€</p>
+                                <p class="product-total-price" data-price="<?= $product['offer'] ?>"><?= $i_purchase_details_total ?>: <?= $product['offer'] * $product['quantity'] ?>€</p>
                                 <?php else : ?>
-                                <p class="product-total-price" data-price="<?= $product['offer'] ?>">Total: <?= $product['price'] * $product['quantity'] ?>€</p>
+                                <p class="product-total-price" data-price="<?= $product['offer'] ?>"><?= $i_purchase_details_total ?>: <?= $product['price'] * $product['quantity'] ?>€</p>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
         <?php endforeach; ?>
         <div class="row">
             <div class="col-6">
-                <h4>Método de pago</h4>
+                <h4><?= $i_purchase_details_payment_method ?></h4>
                 <?php if (isset($paymentMethods) && !empty($paymentMethods)) : ?>
                     <div id="paymentMethodContainer">
                         <?php foreach ($paymentMethods as $paymentMethod) : ?>
@@ -45,7 +45,7 @@
                                 <label for="paymentMethod<?= $paymentMethod['id'] ?>" class="payment-method-label">Paypal: <?= $paymentMethod['paypal_user'] ?></label>
                             <?php else : ?>
                                 <input type="radio" name="paymentMethod" id="paymentMethod<?= $paymentMethod['id'] ?>" value="<?= $paymentMethod['id'] ?>"/>
-                                <label for="paymentMethod<?= $paymentMethod['id'] ?>" class="payment-method-label">Credit card: <?= $paymentMethod['credit_card'] ?></label>
+                                <label for="paymentMethod<?= $paymentMethod['id'] ?>" class="payment-method-label"><?= $i_purchase_details_credit_card ?>: <?= $paymentMethod['credit_card'] ?></label>
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </div>
@@ -54,31 +54,31 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingPaymentMethod">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePaymentMethod" aria-expanded="false" aria-controls="collapsePaymentMethod">
-                                Añadir método de pago
+                            <?= $i_purchase_details_add_payment_method ?>
                             </button>
                         </h2>
                         <div id="collapsePaymentMethod" class="accordion-collapse collapse" aria-labelledby="headingPaymentMethod" data-bs-parent="#accordionPaymentMethod">
                             <div class="accordion-body">
-                                <label class="form-label" for="paymentMethodType">Tipo</label>
+                                <label class="form-label" for="paymentMethodType"><?= $i_purchase_details_payment_method_type ?></label>
                                 <select class="form-control" name="paymentMethodType" id="paymentMethodType">
                                     <option value="1">Paypal</option>
-                                    <option value="2">Credit Card</option>
+                                    <option value="2"><?= $i_purchase_details_credit_card ?></option>
                                 </select>
-                                <label class="form-label" for="paymentMethodValue">Paypal user/credit card number</label>
+                                <label class="form-label" for="paymentMethodValue"><?= $i_purchase_details_payment_method_value ?></label>
                                 <input class="form-control" type="text" name="paymentMethodValue" id="paymentMethodValue">
-                                <button class="btn btn-primary shopping-cart-purchase bg-primary-color text-secondary-color mt-3" id="savePaymentMethod">Guardar método de pago</button>
+                                <button class="btn btn-primary shopping-cart-purchase bg-primary-color text-secondary-color mt-3" id="savePaymentMethod"><?= $i_purchase_details_save_payment_method ?></button>
                             </div>
                         </div>
                     </div>
                 </div>                
             </div>
             <div class="col-6">
-                <h4>Dirección de envio</h4>
+                <h4><?= $i_purchase_details_direction ?></h4>
                 <?php if (isset($sendingDestinations) && !empty($sendingDestinations)) : ?>
                     <div id="sendingContainer">
                         <?php foreach ($sendingDestinations as $sendingDestination) : ?>
                             <input type="radio" name="sendingDestination" id="sendingDestination<?= $sendingDestination['id'] ?>" value="<?= $sendingDestination['id'] ?>"/>                        
-                            <label for="sendingDestination<?= $sendingDestination['id'] ?>" class="direction-label">Street: <?= $sendingDestination['street'] ?></label>
+                            <label for="sendingDestination<?= $sendingDestination['id'] ?>" class="direction-label"><?= $i_purchase_details_street ?>: <?= $sendingDestination['street'] ?></label>
                         <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
@@ -86,26 +86,26 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingDirection">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDirection" aria-expanded="false" aria-controls="collapseDirection">
-                                Añadir dirección de envio
+                            <?= $i_purchase_details_add_direction ?>
                             </button>
                         </h2>
                         <div id="collapseDirection" class="accordion-collapse collapse" aria-labelledby="headingDirection" data-bs-parent="#accordionDirection">
                             <div class="accordion-body">
-                                <label class="form-label" for="directionName">Name</label>
+                                <label class="form-label" for="directionName"><?= $i_purchase_details_label_name ?></label>
                                 <input class="form-control" type="text" name="directionName" id="directionName">
-                                <label class="form-label" for="directionSurname">Surname</label>
+                                <label class="form-label" for="directionSurname"><?= $i_purchase_details_label_surname ?></label>
                                 <input class="form-control" type="text" name="directionSurname" id="directionSurname">
-                                <label class="form-label" for="directionStreet">Street</label>
+                                <label class="form-label" for="directionStreet"><?= $i_purchase_details_label_street ?></label>
                                 <input class="form-control" type="text" name="directionStreet" id="directionStreet">
-                                <label class="form-label" for="directionPostalCode">Postal Code</label>
+                                <label class="form-label" for="directionPostalCode"><?= $i_purchase_details_label_postal_code ?></label>
                                 <input class="form-control" type="text" name="directionPostalCode" id="directionPostalCode">
-                                <label class="form-label" for="directionCountry">Country</label>
+                                <label class="form-label" for="directionCountry"><?= $i_purchase_details_label_country ?></label>
                                 <input class="form-control" type="text" name="directionCountry" id="directionCountry">
-                                <label class="form-label" for="directionPhone">Phone</label>
+                                <label class="form-label" for="directionPhone"><?= $i_purchase_details_label_phone ?></label>
                                 <input class="form-control" type="text" name="directionPhone" id="directionPhone">
                                 <label class="form-label" for="directionEmail">Email</label>
                                 <input class="form-control" type="text" name="directionEmail" id="directionEmail">
-                                <button class="btn btn-primary shopping-cart-purchase bg-primary-color text-secondary-color mt-3" id="saveDirection">Guardar dirección de envio</button>
+                                <button class="btn btn-primary shopping-cart-purchase bg-primary-color text-secondary-color mt-3" id="saveDirection"><?= $i_purchase_details_label_save ?></button>
                             </div>
                         </div>
                     </div>
@@ -114,14 +114,14 @@
         </div>
         <div class="row mt-5">
             <div class="col-6">
-                <h1>Total: <?= $total ?>€</h1>
+                <h1><?= $i_purchase_details_total ?>: <?= $total ?>€</h1>
             </div>
             <div class="col-6">
-                <button class="btn btn-primary shopping-cart-purchase bg-primary-color text-secondary-color" id="processPurchase">Tramitar pedido</button>
+                <button class="btn btn-primary shopping-cart-purchase bg-primary-color text-secondary-color" id="processPurchase"><?= $i_purchase_details_process ?></button>
             </div>
         </div>
     <?php else : ?>
-        <p>Actualmente no tiene ningún producto en el carrito, por favor visite <a href="home">nuestra tienda</a> o <a href="login">inicie sesión</a> para acceder al carrito de su usuario.</p>
+        <p><?= $i_purchase_details_final_message_1 ?> <a href="home"><?= $i_purchase_details_final_message_2?></a> <?= $i_purchase_details_final_message_3 ?> <a href="login"><?= $i_purchase_details_final_message_4 ?></a> <?= $i_purchase_details_final_message_5 ?></p>
     <?php endif; ?>
     
 </div>

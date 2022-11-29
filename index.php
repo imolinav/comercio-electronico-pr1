@@ -9,12 +9,15 @@ function redirect($type) {
     }
 }
 
-$_COOKIE['locale'] = 'es';
+if (!isset($_COOKIE['locale']) || empty($_COOKIE['locale'])) {
+    $_COOKIE['locale'] = 'es';
+}
 if (isset($_POST['locale'])) {
-    $_COOKIE['locale'] = $_POST['locale'];
-    header('Location: ' . $_POST['page']);
-} else if (isset($_SESSION['locale'])) {
-    $_COOKIE['locale'] = $_SESSION['locale'];
+    $language = json_decode($_POST['locale'], true)['language'];
+    $_COOKIE['locale'] = $language;
+    $response = array('status' => 'error', 'message' => 'Language updated');
+    echo json_encode($response);
+    return;
 }
 
 include 'internationalization/' . $_COOKIE['locale'] . '.php';
