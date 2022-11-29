@@ -1,6 +1,6 @@
 <?php
 require_once(__DIR__.'/../../database.php');
-if ($_COOKIE['userId']) {
+if (isset($_COOKIE['userId']) && !empty($_COOKIE['userId'])) {
     $shoppingCart = getShoppingCart($connection, $_COOKIE['userId']);
 }
 
@@ -10,7 +10,7 @@ include 'pages/shared/footer/footer.view.phtml';
 
 function getShoppingCart($connection, $userId) {
     $stmt = mysqli_prepare($connection, "SELECT * FROM purchase WHERE `user_id` = ? AND `finished_at` IS NULL");
-    mysqli_stmt_bind_param($stmt, "i", $userId);
+    mysqli_stmt_bind_param($stmt, "s", $userId);
     mysqli_stmt_execute($stmt);
     $shoppingCart = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
     if (!empty($shoppingCart) && isset($shoppingCart)) {

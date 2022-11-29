@@ -60,5 +60,5 @@ El fichero `pages/scripts.js` contiene las funcionalidades:
 - [ ] Panel de control (comprobar pedidos)
 - [x] Mover .then() a los componentes, fuera de los servicios
 - [ ] Mover llamadas a la API en ficheros de servicios PHP
-- [ ] Revisar id de usuarios (invitados son strings, normales son números)
+- [x] Revisar id de usuarios (invitados son strings, normales son números)
 - [ ] Sistema de puntos de producto

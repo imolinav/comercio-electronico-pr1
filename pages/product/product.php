@@ -87,7 +87,7 @@ function getSameCompanyProducts($connection, $productCompany, $productId) {
 
 function getShoppingCart($connection, $userId) {
     $stmt = mysqli_prepare($connection, "SELECT * FROM purchase WHERE `user_id` = ? AND `finished_at` IS NULL");
-    mysqli_stmt_bind_param($stmt, "i", $userId);
+    mysqli_stmt_bind_param($stmt, "s", $userId);
     mysqli_stmt_execute($stmt);
     $shoppingCart = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
     if (!empty($shoppingCart) && isset($shoppingCart)) {
@@ -102,7 +102,7 @@ function getShoppingCart($connection, $userId) {
 
 function createShoppingCart($connection, $userId) {
     $stmt = mysqli_prepare($connection, "INSERT INTO purchase (`user_id`) VALUES (?)");
-    mysqli_stmt_bind_param($stmt, "i", $userId);
+    mysqli_stmt_bind_param($stmt, "s", $userId);
     mysqli_stmt_execute($stmt);
     return getShoppingCart($connection, $userId);
 }

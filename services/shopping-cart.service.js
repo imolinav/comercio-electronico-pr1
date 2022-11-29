@@ -1,4 +1,3 @@
-import { alert } from '../pages/scripts.js';
 import { get, post } from './http.service.js';
 
 export function getShoppingCart(userId) {
