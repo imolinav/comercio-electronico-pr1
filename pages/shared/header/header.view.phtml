@@ -36,7 +36,11 @@
                             <li><p class="dropdown-item language-select" data-language="en"><?= $i_header_i18n_english ?></p></li>
                         </ul>
                     </div>
-                    <a href="login" class="login-button btn btn-outline me-3">Login</a>
+                    <?php if (isset($user) && !empty($user)) : ?>
+                        <p class="login-button btn btn-outline me-3"><?= $user['name'] ?></p>
+                    <?php else : ?>
+                        <a href="login" class="login-button btn btn-outline me-3">Login</a>
+                    <?php endif; ?>
                     <div class="shopping-cart-container" id="shoppingCartContainer">
                         <span class="shopping-cart-items d-none" id="shoppingCartItems"></span>
                         <button class="btn btn-outline" type="button" id="shoppingCartButton">

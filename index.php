@@ -20,6 +20,10 @@ if (isset($_POST['locale'])) {
     return;
 }
 
+if (isset($_COOKIE['userId']) && !empty($_COOKIE['userId']) && !strpos($_COOKIE['userId'], 'e_')) {
+    $user = getUser($_COOKIE['userId'], $connection);
+}
+
 include 'internationalization/' . $_COOKIE['locale'] . '.php';
 
 $request = $_SERVER['REQUEST_URI'];
@@ -58,6 +62,14 @@ switch ($request) {
     default :
         require __DIR__ . '/pages/product/product.php';
         break; 
+}
+
+function getUser($userId, $connection) {
+    $stmt = mysqli_prepare($connection, "SELECT `id`, `name`, `surname`, `email`, `password` FROM user WHERE `id` = ?");
+    mysqli_stmt_bind_param($stmt, "s", $userId);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
+    return $result;
 }
 
 ?>
