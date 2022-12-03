@@ -43,7 +43,7 @@ shoppingCartButton.addEventListener('click', () => {
         shoppingCartList.setAttribute('id', 'shoppingCartList');
         if (!shoppingCart || shoppingCart.products.length == 0) {
             shoppingCartList.innerHTML = [
-                `<p>No has añadido nada al carrito todavia.</p>`
+                `<p class="px-4 py-2">No has añadido nada al carrito todavia.</p>`
             ].join('');
         } else {
             let productList = '';
@@ -100,7 +100,9 @@ function createResultBox(data) {
     resultBox.setAttribute('class', 'result-container');
     resultBox.setAttribute('id', 'resultContainer');
     data.forEach(element => {
-        const elementBox = document.createElement('div');
+        const elementBox = document.createElement('a');
+        elementBox.setAttribute('href', element.link);
+        elementBox.setAttribute('class', 'header-link');
         const priceText = element.offer 
             ? `<p class="result-element-price">${element.offer}</p><p class="result-element-previous">${element.price}</p>`
             : `<p class="result-element-price">${element.price}</p>`

@@ -38,13 +38,13 @@ function handleNewPaymentMethod() {
             res.data.forEach(paymentMethod => {
                 if (paymentMethod.payment_type === 1) {
                     paymentMethodContainer.innerHTML += [
-                        `<label for="paymentMethod${paymentMethod.id}">Paypal: ${paymentMethod.paypal_user}</label>`,
-                        `<input type="radio" name="paymentMethod" id="paymentMethod${paymentMethod.id}" value="${paymentMethod.id}"/>`
+                        `<input type="radio" name="paymentMethod" id="paymentMethod${paymentMethod.id}" value="${paymentMethod.id}"/>`,
+                        `<label for="paymentMethod${paymentMethod.id}" class="payment-method-label">Paypal: ${paymentMethod.paypal_user}</label>`
                     ].join('');
                 } else {
                     paymentMethodContainer.innerHTML += [
-                        `<label for="paymentMethod${paymentMethod.id}">Credit card: ${paymentMethod.credit_card}</label>`,
-                        `<input type="radio" name="paymentMethod" id="paymentMethod${paymentMethod.id}" value="${paymentMethod.id}"/>`
+                        `<input type="radio" name="paymentMethod" id="paymentMethod${paymentMethod.id}" value="${paymentMethod.id}"/>`,
+                        `<label for="paymentMethod${paymentMethod.id}" class="payment-method-label">Credit card: ${paymentMethod.credit_card}</label>`
                     ].join('');
                 }
             });
@@ -69,8 +69,8 @@ function handleNewDirection() {
             directionContainer.innerHTML = '';
             res.data.forEach(direction => {
                 directionContainer.innerHTML += [
-                    `<label for="sendingDestination${direction.id}">Street: ${direction.street}</label>`,
-                    `<input type="radio" name="sendingDestination" id="sendingDestination${direction.id}" value="${direction.id}"/>`
+                    `<input type="radio" name="sendingDestination" id="sendingDestination${direction.id}" value="${direction.id}"/>`,
+                    `<label for="sendingDestination${direction.id}" class="direction-label">Street: ${direction.street}</label>`
                 ].join('');
             });
         } else {

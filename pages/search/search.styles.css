@@ -1,3 +1,7 @@
+.search-container {
+    margin-bottom: auto;
+}
+
 .product-price {
     display: flex;
     align-items: center;

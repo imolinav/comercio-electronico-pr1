@@ -2,6 +2,11 @@
     border-color: #000078;
 }
 
+.header-link {
+    text-decoration: none;
+    color: black !important;
+}
+
 .header button, .header a {
     border-color: #000078;
     color: #000078;

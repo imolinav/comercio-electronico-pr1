@@ -37,8 +37,8 @@
         <div class="row">
             <div class="col-6">
                 <h4><?= $i_purchase_details_payment_method ?></h4>
-                <?php if (isset($paymentMethods) && !empty($paymentMethods)) : ?>
-                    <div id="paymentMethodContainer">
+                <div id="paymentMethodContainer">
+                    <?php if (isset($paymentMethods) && !empty($paymentMethods)) : ?>
                         <?php foreach ($paymentMethods as $paymentMethod) : ?>
                             <?php if ($paymentMethod['payment_type'] == 1): ?>
                                 <input type="radio" name="paymentMethod" id="paymentMethod<?= $paymentMethod['id'] ?>" value="<?= $paymentMethod['id'] ?>"/>
@@ -48,8 +48,8 @@
                                 <label for="paymentMethod<?= $paymentMethod['id'] ?>" class="payment-method-label"><?= $i_purchase_details_credit_card ?>: <?= $paymentMethod['credit_card'] ?></label>
                             <?php endif; ?>
                         <?php endforeach; ?>
-                    </div>
-                <?php endif; ?>
+                    <?php endif; ?>
+                </div>
                 <div class="accordion mt-3" id="accordionPaymentMethod">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingPaymentMethod">
@@ -74,14 +74,14 @@
             </div>
             <div class="col-6">
                 <h4><?= $i_purchase_details_direction ?></h4>
-                <?php if (isset($sendingDestinations) && !empty($sendingDestinations)) : ?>
-                    <div id="sendingContainer">
+                <div id="sendingContainer">
+                    <?php if (isset($sendingDestinations) && !empty($sendingDestinations)) : ?>
                         <?php foreach ($sendingDestinations as $sendingDestination) : ?>
                             <input type="radio" name="sendingDestination" id="sendingDestination<?= $sendingDestination['id'] ?>" value="<?= $sendingDestination['id'] ?>"/>                        
                             <label for="sendingDestination<?= $sendingDestination['id'] ?>" class="direction-label"><?= $i_purchase_details_street ?>: <?= $sendingDestination['street'] ?></label>
                         <?php endforeach; ?>
-                    </div>
-                <?php endif; ?>
+                    <?php endif; ?>
+                </div>
                 <div class="accordion mt-3" id="accordionDirection">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingDirection">

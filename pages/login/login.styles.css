@@ -1,11 +1,13 @@
+.login {
+    display: flex;
+    justify-content: center;
+}
+
 .login-container {
     width: 500px;
     border: 1px solid #ced4da;
     border-radius: 5px;
     padding: 40px;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 50%);
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 

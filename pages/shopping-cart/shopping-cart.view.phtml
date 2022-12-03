@@ -5,10 +5,10 @@
             <p><?= $i_shopping_cart_intro_2 ?> <a href="home"><?= $i_shopping_cart_intro_3 ?></a> <?= $i_shopping_cart_intro_4 ?> <a href="login"><?= $i_shopping_cart_intro_5 ?></a> <?= $i_shopping_cart_intro_6 ?></p>
         <?php else : ?>
             <?php if (strpos($_COOKIE['userId'], 'e_')) : ?>
-            <p><?= $i_shopping_cart_intro_7 ?></p> 
+            <h4><?= $i_shopping_cart_intro_7 ?></h4> 
             <p><?= $i_shopping_cart_intro_8 ?> <a href="register"><?= $i_shopping_cart_intro_9 ?></a>, <?= $i_shopping_cart_intro_4 ?> <a href="login"><?= $i_shopping_cart_intro_10 ?></a> <?= $i_shopping_cart_intro_11 ?></p>
             <?php else : ?>
-            <p><?= $i_shopping_cart_intro_12 ?> "usuario"!</p>
+            <h4><?= $i_shopping_cart_intro_12 ?> <?= $user['name'] ?> <?= $user['surname'] ?>!</h4>
             <?php endif; ?>
             <?php foreach($shoppingCart['products'] as $product) : ?>
             <div class="shopping-cart-product-list mb-4" id="shoppingCartItem<?= $product['id'] ?>">
