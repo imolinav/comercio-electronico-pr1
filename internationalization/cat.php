@@ -19,10 +19,10 @@ $i_login_register_text = 'Encara no tens conte?';
 $i_login_register = 'Regístrat';
 
 $i_product_quantity = 'Quantitat';
-$i_product_add = 'Añadir al carrito';
-$i_product_same_type = 'Productos del mismo tipo';
-$i_product_same_company = 'i_product_remove_success de la misma compañia';
-$i_product_see_product = 'Ver producto';
+$i_product_add = 'Afegir a la cistella';
+$i_product_same_type = 'Productes del mismo tipo';
+$i_product_same_company = 'Productes de la misma compañia';
+$i_product_see_product = 'Vore producto';
 
 $i_purchase_details_summary = 'Resumen del pedido';
 $i_purchase_details_quantity = 'Quantitat';

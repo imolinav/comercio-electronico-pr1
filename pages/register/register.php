@@ -8,6 +8,8 @@ if (isset($_POST['register'])) {
             $response = array('status' => 'error', 'message' => 'There was an error creating the user');
             echo json_encode($response);
         } else {
+            unset($user['password']);
+            setcookie('userId', $user['id']);  
             $response = array('status' => 'success', 'message' => 'User created correctly', 'data' => $user);
             echo json_encode($response);
         }
@@ -25,7 +27,7 @@ function createUser($connection, $user_name, $user_surname, $user_email, $user_b
     $stmt = mysqli_prepare($connection, "INSERT INTO user (`name`, `surname`, `email`, `password`, `birth_date`) VALUES (?, ?, ?, ?, ?)");
     mysqli_stmt_bind_param($stmt, "sssss", $user_name, $user_surname, $user_email, $user_password, $user_birth_date);
     mysqli_stmt_execute($stmt);
-    return getUser($connection, mysqli_insert_id($connection));
+    return getUserById($connection, mysqli_insert_id($connection));
 }
 
 function checkUser($connection, $user_email) {
@@ -36,9 +38,9 @@ function checkUser($connection, $user_email) {
     return $result->num_rows;
 }
 
-function getUser($connection, $user_id) {
+function getUserById($connection, $userId) {
     $stmt = mysqli_prepare($connection, "SELECT `id`, `name`, `surname`, `email`, `password` FROM user WHERE `id` = ?");
-    mysqli_stmt_bind_param($stmt, "s", $user_id);
+    mysqli_stmt_bind_param($stmt, "s", $userId);
     mysqli_stmt_execute($stmt);
     $result = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
     return $result;

@@ -9,11 +9,8 @@ export function login(data) {
         if (res.status === 'success' && res.data) {
             localStorage.setItem('user', JSON.stringify(res.data));
             const user = JSON.parse(res.data);
-            console.log(res.data.id);
-            console.log(user.id);
             createCookie('userId', user.id, 30);
-            /* location.href = '/';
-            location.reload(); */
+            location.href = '/';
         } else {
             alert(res.message, 'danger');
         }
@@ -26,9 +23,8 @@ export function register(data) {
         if (res.status === 'success' && res.data) {
             localStorage.setItem('user', JSON.stringify(res.data));
             const user = JSON.parse(res.data);
-            console.log(res.data.id);
-            console.log(user.id);
             createCookie('userId', user.id, 30);
+            location.href = '/';
         } else {
             alert(res.message, 'danger');
         }
